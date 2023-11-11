@@ -1,4 +1,6 @@
 import {useSearchParams} from 'react-router-dom';
+import DiwaliLamp from "./diwali-lamp1.png";
+import Lamp from "./lamp.png";
 import "./Home.css"; 
 
 const GREETINGS = [
@@ -13,10 +15,15 @@ function Home (){
 
     const to = searchParams.get("to");
     const from = searchParams.get("from");
-    const greetingNumber = searchParams.get("g") >= GREETINGS.length ? 0 : searchParams.get("g") || 0;              
+    const greetingNumber = searchParams.get("g") >= GREETINGS.length ? 0 : searchParams.get("g") || 0;  
+    const themeNumber = searchParams.get("t");            
 
     return(
-     <div className='glowing-wishes-container'>
+        <div>
+            <div className={`glowing-wishes-container ${`theme-${themeNumber}`}`}>
+                <img src={DiwaliLamp} className='diwali-lamp left-lamp'/>
+                <img src={DiwaliLamp} className='diwali-lamp right-lamp'/>
+                <br/><br/><br/>
         {/* <h1>To {to} from {from}</h1> */}
         <span>Dear {to} 💐</span>
         {/* <p>
@@ -27,7 +34,11 @@ function Home (){
 
         </p>
         <span className='form-text'>🙏आपली शुभेच्छुक {from}</span>
+        <br/><br/><br/>
+        <img src={Lamp} className='lamp'/>
      </div>
+     <h1>{import.meta.env.VITE_BASE_URL}</h1>
+        </div>
     )
 }
 export default Home
