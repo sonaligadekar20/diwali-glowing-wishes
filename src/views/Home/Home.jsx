@@ -2,6 +2,7 @@ import {useSearchParams} from 'react-router-dom';
 import DiwaliLamp from "./diwali-lamp1.png";
 import Lamp from "./lamp.png";
 import "./Home.css"; 
+import { useState } from 'react';
 
 const GREETINGS = [
 "आठवण सूर्याची,साठवण स्नेहाची,कणभर दु:ख,मणभर प्रेम,फराळाचा गोडवा, ऋणानुबंध वाढवा,आली आली दिवाळी स्नेहहर्षाची… सर्वांना दिपावलीच्या हार्दिक शुभेच्छा…🌹🌹",
@@ -13,10 +14,10 @@ const GREETINGS = [
 function Home (){
     const [searchParams] = useSearchParams();
 
-    const to = searchParams.get("to");
-    const from = searchParams.get("from");
-    const greetingNumber = searchParams.get("g") >= GREETINGS.length ? 0 : searchParams.get("g") || 0;  
-    const themeNumber = searchParams.get("t");            
+    const [to, setTo] =useState(searchParams.get("to"));
+    const [from, setFrom] = useState(searchParams.get("from"));
+    const [greetingNumber, setGreetingNumber] =useState(searchParams.get("g") >= GREETINGS.length ? 0 : searchParams.get("g") || 0);
+    const [themeNumber, setThemeNumber] = useState(searchParams.get("t"))      
 
     return(
         <div>
@@ -24,11 +25,9 @@ function Home (){
                 <img src={DiwaliLamp} className='diwali-lamp left-lamp'/>
                 <img src={DiwaliLamp} className='diwali-lamp right-lamp'/>
                 <br/><br/><br/>
-        {/* <h1>To {to} from {from}</h1> */}
+   
         <span>Dear {to} 💐</span>
-        {/* <p>
-        "स्नेहाचा सुगंध दरवळला,आनंदाचा सण आला.विनंती आमची परमेश्वराला,सौख्य, समृध्दी लाभो तुम्हाला.दिवाळीच्या हार्दिक शुभेच्छा!"
-        </p> */}
+      
         <p>
             {GREETINGS[greetingNumber]}
 
@@ -37,8 +36,53 @@ function Home (){
         <br/><br/><br/>
         <img src={Lamp} className='lamp'/>
      </div>
-     <h1>{import.meta.env.VITE_BASE_URL}</h1>
-        </div>
+
+     <p className='create-your-own'>Do you want to create your own Diwali Greeting? Customise it here👇</p>
+
+     <p className='url'>{import.meta.env.VITE_BASE_URL}?to={to}&from={from}&g={greetingNumber}&t={themeNumber}</p>
+
+     <div className='input-container'>
+     <input type="text" placeholder='To'
+     className='input'
+     value={to}
+     onChange={(e) =>{
+        setTo(e.target.value)
+     }}/>
+
+     <input type="text" placeholder='From'
+className='input'
+     value={from}
+     onChange={(e) =>{
+        setFrom(e.target.value)
+     }}/>
+
+     <select value={greetingNumber} 
+     className='input'
+     onChange={(e)=>{
+        setGreetingNumber(e.target.value)
+     }}>
+        <option value="0">Greeting 1</option>
+        <option value="1">Greeting 2</option>
+        <option value="2">Greeting 3</option>
+        <option value="3">Greeting 4</option>
+       </select>
+
+       <select value={themeNumber} 
+       className='input'
+       onChange={(e)=>{
+        setThemeNumber(e.target.value)
+     }}>
+        <option value="0">None</option>
+        <option value="1">Theme 1</option>
+        <option value="2">Theme 2</option>
+        <option value="3">Theme 3</option>
+        <option value="4">Theme 4</option>
+       </select>
+
+     </div>
+
+
+        </div>   
     )
 }
 export default Home
