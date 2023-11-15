@@ -42,14 +42,12 @@ body{
 .right-lamp{
     right: 10px;
 }
-
 .lamp{
     height: 50px;
     position: absolute;
     bottom: 40px;
     right: 40px;
 }
-/*  */
 .theme-1{
     background-image: url('./diwalibg1.png');
     background-size: cover;
@@ -86,6 +84,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #e6e600;
+    padding: 4px;
+
 }
 .input{
     width: 150px;
