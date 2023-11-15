@@ -22,17 +22,18 @@ function Home (){
     return(
         <div>
             <div className={`glowing-wishes-container ${`theme-${themeNumber}`}`}>
+               <h2 className='glowing-wishes'>🎆..HAPPY DIWALI..🪔</h2>
                 <img src={DiwaliLamp} className='diwali-lamp left-lamp'/>
                 <img src={DiwaliLamp} className='diwali-lamp right-lamp'/>
                 <br/><br/><br/>
    
-        <span>Dear {to} 💐</span>
+        <span className='to-text'>Dear {to} 💐</span>
       
         <p>
             {GREETINGS[greetingNumber]}
 
         </p>
-        <span className='form-text'>🙏आपली शुभेच्छुक {from}</span>
+        <span className='form-text'>From - 🙏 {from}</span>
         <br/><br/><br/>
         <img src={Lamp} className='lamp'/>
      </div>
@@ -40,7 +41,7 @@ function Home (){
      <p className='create-your-own'>Do you want to create your own Diwali Greeting? Customise it here👇</p>
 
      <p className='url'>{import.meta.env.VITE_BASE_URL}?to={to}&from={from}&g={greetingNumber}&t={themeNumber}</p>
-
+     
      <div className='input-container'>
      <input type="text" placeholder='To'
      className='input'
@@ -77,6 +78,7 @@ className='input'
         <option value="2">Theme 2</option>
         <option value="3">Theme 3</option>
         <option value="4">Theme 4</option>
+        <option value="5">Theme 5</option>
        </select>
 
      </div>
