@@ -87,6 +87,9 @@
 .input{
     width: 150px;
     margin: 10px 20px;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
 
 }
 
